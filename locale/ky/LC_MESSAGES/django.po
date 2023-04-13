@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-13 04:06+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: applications/construction_object/models.py:17
+msgid "Старт продаж"
+msgstr "Сатуулардын башталышы"
+
+#: applications/construction_object/models.py:18
+msgid "Скидки до 10%"
+msgstr "10% чейин арзандатуулар"
+
+#: applications/construction_object/models.py:19
+msgid "Последнее предложение"
+msgstr "Акыркы сунуштар"
+
+#: applications/construction_object/models.py:20
+msgid "Продажи завершины"
+msgstr "Сатылды"
+
+#: applications/construction_object/models.py:41
+msgid "Сдача в I квартале"
+msgstr "I кварталда берилет"
+
+#: applications/construction_object/models.py:42
+msgid "Сдача в II квартале"
+msgstr "II кварталда берилет"
+
+#: applications/construction_object/models.py:43
+msgid "Сдача в III квартале"
+msgstr "III кварталда берилет"
+
+#: applications/construction_object/models.py:44
+msgid "Сдача в IV квартале"
+msgstr "IV кварталда берилет"
+
+#: applications/construction_object/models.py:130
+msgid "1 комната"
+msgstr "1 комнаталуу"
+
+#: applications/construction_object/models.py:131
+msgid "2 комнаты"
+msgstr "2 комнаталуу"
+
+#: applications/construction_object/models.py:132
+msgid "3 комнаты"
+msgstr "3 комнаталуу"
+
+#: applications/construction_object/models.py:133
+msgid "4 комнаты"
+msgstr "4 комнаталуу"
+
+#: applications/construction_object/models.py:134
+msgid "5 комнат"
+msgstr "5 комнаталуу"
+
+#: applications/construction_object/models.py:138
+msgid "Жилой"
+msgstr "Турак жай"
+
+#: applications/construction_object/models.py:139
+msgid "Коммерческий"
+msgstr "Коммерциялык"
+
+#: applications/news_blog/models.py:7
+msgid "Новости компании"
+msgstr "Компаниянын жаңылыктары"
+
+#: applications/news_blog/models.py:8
+msgid "Пресс-центр"
+msgstr "Басма сөз"
+
+#: applications/news_blog/models.py:9
+msgid "Ход строительства"
+msgstr "Курулуштун журушу"
+
+#: applications/team_member/models.py:6
+msgid "совет директоров"
+msgstr "башкаруучулар кенеши"
+
+#: applications/team_member/models.py:7
+msgid "генеральный директор"
+msgstr "башкы директор"
+
+#: applications/team_member/models.py:8
+msgid "менеджмент"
+msgstr "менеджмент"
+
+#: core/settings.py:138
+msgid "Russia"
+msgstr "Орусча"
+
+#: core/settings.py:139
+msgid "Kyrgyz"
+msgstr "Кыргызча"
+
