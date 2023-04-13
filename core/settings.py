@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+
+import cloudinary
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,6 +47,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_yasg',
     'django_summernote',
+    'cloudinary_storage',
+    'cloudinary',
     # apps
     'applications.construction_object',
     'applications.news_blog',
@@ -168,3 +172,10 @@ REST_FRAMEWORK = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dmefttnfm',
+    'API_KEY': '276682834927378',
+    'API_SECRET': 'a_ZeZEuy0e4uHfw3ZO8_fSHGSPg',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
