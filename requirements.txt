@@ -3,9 +3,9 @@ bleach==6.0.0
 certifi==2022.12.7
 charset-normalizer==3.1.0
 coreapi==2.3.3
-coreschema==0.0.4
+coreschema
 Django==4.2
-django-cors-headers==3.14.0
+django-cors-headers
 django-filter==23.1
 django-modeltranslation==0.18.9
 django-summernote==0.8.20.0
