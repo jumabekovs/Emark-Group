@@ -8,7 +8,7 @@ class ConstructionFilter(filters.FilterSet):
 
     class Meta:
         model = Construction
-        fields = ('district', 'start_price', 'end_price', 'construction_completion_year')
+        fields = ('type', 'district', 'start_price', 'end_price', 'construction_completion_year')
 
 
 class FlatFilter(filters.FilterSet):

@@ -51,7 +51,14 @@ class Year(models.Model):
         verbose_name_plural = 'Года сдачи объектов'
 
 
+class ConstructionTypeChoice(models.TextChoices):
+    residential = ('жилой', _('Жилой'))
+    commercial = ('коммерческий', _('Коммерческий'))
+
+
 class Construction(models.Model):
+    type = models.CharField(verbose_name='тип объекта', max_length=256, choices=ConstructionStateChoice.choices,
+                            blank=True, null=True)
     title = models.CharField(verbose_name='название', max_length=256, unique=True)
     main_picture = models.ImageField(verbose_name='Главная фотография', upload_to='construction_images')
     street_address = models.CharField(verbose_name='адрес улицы', max_length=200)
@@ -138,7 +145,7 @@ class FlatTypeChoice(models.TextChoices):
 class Flat(models.Model):
     construction = models.ForeignKey(Construction, on_delete=models.CASCADE, verbose_name='объект',
                                      related_name='layout', blank=True, null=True)
-    type = models.CharField(verbose_name='тип объекта', max_length=256, choices=FlatTypeChoice.choices,
+    type = models.CharField(verbose_name='тип помещения', max_length=256, choices=FlatTypeChoice.choices,
                             blank=True, null=True)
     layout_photo = models.ImageField(verbose_name='планировка ', upload_to='layouts', blank=True, null=True)
     design_photo = models.ImageField(verbose_name='3D модель', upload_to='layouts/', blank=True, null=True)
