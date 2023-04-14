@@ -33,13 +33,13 @@ class ConstructionImageSerializer(serializers.ModelSerializer):
 class ConstructionListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Construction
-        fields = ('title', 'main_picture', 'offer', 'street_address', 'cost_per_square_meter')
+        fields = ('id', 'title', 'main_picture', 'offer', 'street_address', 'cost_per_square_meter')
 
 
 class ConstructionDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Construction
-        exclude = ('offer', 'cost_per_square_meter')
+        exclude = ('id', 'offer', 'cost_per_square_meter')
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -47,13 +47,15 @@ class ConstructionDetailSerializer(serializers.ModelSerializer):
         representation['news'] = PostListSerializer(instance.post_construction.all(), many=True).data
         representation['images'] = ConstructionImageSerializer(ConstructionImage.objects.filter(construction=instance.id),
                                                                many=True).data
+        representation['flats'] = FlatListSerializer(instance.layout.all(), many=True).data
+        representation['posts'] = PostListSerializer(instance.post_construction.all(), many=True).data
         return representation
 
 
 class FlatListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flat
-        fields = ('layout_photo',)
+        fields = ('id', 'layout_photo',)
 
 
 class FlatDetailSerializer(serializers.ModelSerializer):

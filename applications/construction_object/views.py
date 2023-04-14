@@ -22,6 +22,7 @@ class ConstructionListView(ListAPIView):
             Construction.objects.filter(is_selling=True).count()}
         return response
 
+
 class ConstructionDetailView(RetrieveAPIView):
     queryset = Construction.objects.all()
     serializer_class = ConstructionDetailSerializer
