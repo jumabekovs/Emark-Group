@@ -33,7 +33,7 @@ class ConstructionImageSerializer(serializers.ModelSerializer):
 class ConstructionListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Construction
-        fields = ('id', 'title', 'main_picture', 'offer', 'street_address', 'cost_per_square_meter')
+        fields = ('id', 'title', 'main_picture', 'offer', 'street_address', 'cost_per_square_meter', 'min_price')
 
 
 class ConstructionDetailSerializer(serializers.ModelSerializer):
