@@ -57,7 +57,7 @@ class ConstructionTypeChoice(models.TextChoices):
 
 
 class Construction(models.Model):
-    type = models.CharField(verbose_name='тип объекта', max_length=256, choices=ConstructionStateChoice.choices,
+    type = models.CharField(verbose_name='тип объекта', max_length=256, choices=ConstructionTypeChoice.choices,
                             blank=True, null=True)
     title = models.CharField(verbose_name='название', max_length=256, unique=True)
     main_picture = models.ImageField(verbose_name='Главная фотография', upload_to='construction_images')
