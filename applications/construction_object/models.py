@@ -34,10 +34,10 @@ class ConstructionStateChoice(models.TextChoices):
 
 
 class Quarter(models.TextChoices):
-    first = ('1 квартал', _('Сдача в I квартале'))
-    second = ('2 квартал', _('Сдача в II квартале'))
-    third = ('3 квартал', _('Сдача в III квартале'))
-    fourth = ('4 квартал', _('Сдача в IV квартале'))
+    first = ('I', _('Сдача в I квартале'))
+    second = ('II', _('Сдача в II квартале'))
+    third = ('III', _('Сдача в III квартале'))
+    fourth = ('IV', _('Сдача в IV квартале'))
 
 
 class Year(models.Model):

@@ -48,6 +48,8 @@ class ConstructionDetailSerializer(serializers.ModelSerializer):
         representation['images'] = ConstructionImageSerializer(ConstructionImage.objects.filter(construction=instance.id),
                                                                many=True).data
         representation['flats'] = FlatListSerializer(instance.layout.all(), many=True).data
+        representation['district'] = str(instance.district.title)
+        representation['construction_completion_year'] = str(instance.construction_completion_year.year)
         representation['posts'] = PostListSerializer(instance.post_construction.all(), many=True).data
         return representation
 
