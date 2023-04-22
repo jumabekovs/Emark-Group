@@ -101,7 +101,8 @@ class ConstructionImage(models.Model):
 
 
 class Advantage(models.Model):
-    construction = models.ManyToManyField(Construction, related_name='advantage_of_construction')
+    construction = models.ManyToManyField(Construction, verbose_name='Объект',
+                                          related_name='advantage_of_construction')
     description = models.TextField(verbose_name='краткое описание', blank=True, null=True)
     logo = models.ImageField(verbose_name='лого', upload_to='advantage_logo', blank=True, null=True)
 

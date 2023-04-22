@@ -1,6 +1,12 @@
 from rest_framework import serializers
-from .models import Construction, Advantage, Flat, ConstructionImage
+from .models import Construction, Advantage, Flat, ConstructionImage, Feature
 from ..news_blog.serializers import PostListSerializer
+
+
+class FeaturesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feature
+        fields = '__all__'
 
 
 class AdvantageSerializer(serializers.ModelSerializer):
@@ -48,6 +54,7 @@ class ConstructionDetailSerializer(serializers.ModelSerializer):
         representation['images'] = ConstructionImageSerializer(ConstructionImage.objects.filter(construction=instance.id),
                                                                many=True).data
         representation['flats'] = FlatListSerializer(instance.layout.all(), many=True).data
+        representation['features'] = FeaturesSerializer(instance.features.all(), many=True).data
         representation['district'] = str(instance.district.title)
         representation['construction_completion_year'] = str(instance.construction_completion_year.year)
         representation['posts'] = PostListSerializer(instance.post_construction.all(), many=True).data

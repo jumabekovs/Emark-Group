@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.admin.options import InlineModelAdmin
 from django.contrib.auth.models import Group, User
 from django_summernote.admin import SummernoteModelAdmin, SummernoteModelAdminMixin
 
@@ -14,15 +15,16 @@ class ConstructionImageAdmin(admin.TabularInline):
     extra = 1
 
 
+class FeatureSummernoteAdmin(SummernoteModelAdmin, TranslationAdmin):
+    summernote_fields = 'description'
+
+
 class FeatureAdmin(SummernoteModelAdminMixin, admin.TabularInline):
     model = Feature
     max_num = 4
     extra = 1
-    summernote_fields = 'description'
-
-
-class FeatureSummernoteAdmin(SummernoteModelAdmin):
-    summernote_fields = 'description'
+    summernote_fields = ('description_ky', 'description_ru')
+    exclude = ('title', 'description')
 
 
 class ConstructionAdmin(SummernoteModelAdmin, TranslationAdmin):
@@ -35,12 +37,16 @@ class FlatAdmin(TranslationAdmin):
     list_display = ['construction', 'type', 'square_meters']
 
 
+class AdvantageAdmin(TranslationAdmin):
+    model = Advantage
+    list_display = ['description', 'logo']
+
+
 admin.site.register(District)
 admin.site.register(Construction, ConstructionAdmin)
-admin.site.register(Advantage)
+admin.site.register(Advantage, AdvantageAdmin)
 admin.site.register(Feature, FeatureSummernoteAdmin)
 admin.site.register(Flat, FlatAdmin)
 admin.site.register(Year)
-admin.site.unregister(Group)
 admin.site.unregister(User)
 admin.site.unregister(get_attachment_model())
