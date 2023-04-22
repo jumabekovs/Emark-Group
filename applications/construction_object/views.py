@@ -34,6 +34,11 @@ class FlatListView(ListAPIView):
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = FlatFilter
 
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            construction_id=self.kwargs['pk']
+        )
+
 
 class FlatDetailView(RetrieveAPIView):
     queryset = Flat.objects.all()

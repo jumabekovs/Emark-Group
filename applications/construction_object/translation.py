@@ -9,7 +9,7 @@ class ConstructionTranslationOptions(TranslationOptions):
 
 @register(Flat)
 class FlatTranslationOptions(TranslationOptions):
-    fields = ('type', 'mortgage')
+    fields = ('mortgage', )
 
 
 @register(Feature)

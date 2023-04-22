@@ -64,7 +64,7 @@ class ConstructionDetailSerializer(serializers.ModelSerializer):
 class FlatListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flat
-        fields = ('id', 'layout_photo',)
+        fields = '__all__'
 
 
 class FlatDetailSerializer(serializers.ModelSerializer):
