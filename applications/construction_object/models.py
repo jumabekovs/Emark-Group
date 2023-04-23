@@ -82,6 +82,7 @@ class Construction(models.Model):
     youtube_link = models.URLField(verbose_name='ссылка на видео', blank=True, null=True)
     is_selling = models.BooleanField(verbose_name='в продаже', default=False)
     is_completed = models.BooleanField(verbose_name='построен', default=False)
+    key_words = models.CharField(verbose_name='Ключевые слова', max_length=556, blank=True, null=True)
 
     def __str__(self):
         return f'{self.title}, {self.street_address}'
