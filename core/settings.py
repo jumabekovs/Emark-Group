@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'applications.construction_object',
     'applications.news_blog',
     'applications.team_member',
+    'applications.configuration',
 ]
 
 MIDDLEWARE = [
@@ -174,8 +175,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dmefttnfm',
-    'API_KEY': '276682834927378',
-    'API_SECRET': 'a_ZeZEuy0e4uHfw3ZO8_fSHGSPg',
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

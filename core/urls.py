@@ -32,6 +32,7 @@ urlpatterns += i18n_patterns(
     path('construction/<int:pk>/', include('applications.construction_object.urls')),
     path('blog/', include('applications.news_blog.urls')),
     path('team/', include('applications.team_member.urls')),
+    path('conf/', include('applications.configuration.urls')),
 )
 
 admin.site.site_header = 'Emark Group'
