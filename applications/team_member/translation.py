@@ -4,4 +4,4 @@ from .models import Member
 
 @register(Member)
 class FlatTranslationOptions(TranslationOptions):
-    fields = ('position', 'bio', )
+    fields = ('position', 'bio', 'title', 'quote')

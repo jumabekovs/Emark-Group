@@ -6,7 +6,7 @@ from .models import Member
 
 
 class MemberAdmin(SummernoteModelAdmin, TranslationAdmin):
-    summernote_fields = 'bio'
+    summernote_fields = ('bio', 'title', 'quote')
 
 
 admin.site.register(Member, MemberAdmin)

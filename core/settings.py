@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'applications.news_blog',
     'applications.team_member',
     'applications.configuration',
+    'applications.document',
 ]
 
 MIDDLEWARE = [

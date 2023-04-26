@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.admin.options import InlineModelAdmin
 from django.contrib.auth.models import Group, User
 from django_summernote.admin import SummernoteModelAdmin, SummernoteModelAdminMixin
 
@@ -49,4 +48,5 @@ admin.site.register(Feature, FeatureSummernoteAdmin)
 admin.site.register(Flat, FlatAdmin)
 admin.site.register(Year)
 admin.site.unregister(User)
+admin.site.unregister(Group)
 admin.site.unregister(get_attachment_model())
