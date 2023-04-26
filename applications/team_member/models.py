@@ -6,6 +6,7 @@ class JobCategoryChoices(models.TextChoices):
     board_of_directors = ('совет директоров', _('совет директоров'))
     ceo = ('генеральный директор', _('генеральный директор'))
     management = ('менеджмент', _('менеджмент'))
+    investors = ('инвесторы', _('инвесторы'))
 
 
 class Member(models.Model):
