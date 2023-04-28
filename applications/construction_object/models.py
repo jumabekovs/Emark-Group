@@ -165,3 +165,19 @@ class Flat(models.Model):
     class Meta:
         verbose_name = 'Помещение'
         verbose_name_plural = 'Помещения'
+
+
+class Infrastructure(models.Model):
+    construction = models.ForeignKey(Construction, on_delete=models.CASCADE, verbose_name='объект',
+                                     related_name='infrasrtucture_nearby', blank=True, null=True)
+    culture = models.PositiveIntegerField(verbose_name='Культура и отдых', blank=True, null=True)
+    medicine = models.PositiveIntegerField(verbose_name='Медицина', blank=True, null=True)
+    education = models.PositiveIntegerField(verbose_name='Образование', blank=True, null=True)
+    finance = models.PositiveIntegerField(verbose_name='Финансы', blank=True, null=True)
+    trade = models.PositiveIntegerField(verbose_name='Торговля', blank=True, null=True)
+    food = models.PositiveIntegerField(verbose_name='Еда', blank=True, null=True)
+    sport = models.PositiveIntegerField(verbose_name='Спорт', blank=True, null=True)
+    service = models.PositiveIntegerField(verbose_name='Услуги', blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.construction}'

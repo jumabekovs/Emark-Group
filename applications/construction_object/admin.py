@@ -2,10 +2,15 @@ from django.contrib import admin
 from django.contrib.auth.models import Group, User
 from django_summernote.admin import SummernoteModelAdmin, SummernoteModelAdminMixin
 
-from .models import District, Construction, ConstructionImage, Advantage, Feature, Flat, Year
+from .models import District, Construction, ConstructionImage, Advantage, Feature, Flat, Year, Infrastructure
 from django_summernote.utils import get_attachment_model
 
 from modeltranslation.admin import TranslationAdmin
+
+
+class InfrastructureAdmin(admin.TabularInline):
+    model = Infrastructure
+    max_num = 1
 
 
 class ConstructionImageAdmin(admin.TabularInline):
@@ -28,7 +33,7 @@ class FeatureAdmin(SummernoteModelAdminMixin, admin.TabularInline):
 
 class ConstructionAdmin(SummernoteModelAdmin, TranslationAdmin):
     summernote_fields = 'description'
-    inlines = [ConstructionImageAdmin, FeatureAdmin]
+    inlines = [ConstructionImageAdmin, FeatureAdmin, InfrastructureAdmin]
 
 
 class FlatAdmin(TranslationAdmin):
