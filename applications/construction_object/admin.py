@@ -10,8 +10,8 @@ from modeltranslation.admin import TranslationAdmin
 
 class ConstructionImageAdmin(admin.TabularInline):
     model = ConstructionImage
-    max_num = 2
-    extra = 1
+    max_num = 6
+    extra = 2
 
 
 class FeatureSummernoteAdmin(SummernoteModelAdmin, TranslationAdmin):
