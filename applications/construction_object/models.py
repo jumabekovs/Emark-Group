@@ -66,6 +66,11 @@ class ConstructionTypeChoice(models.TextChoices):
 class Construction(models.Model):
     type = models.CharField(verbose_name='тип объекта', max_length=256, choices=ConstructionTypeChoice.choices,
                             blank=True, null=True)
+    is_selling = models.BooleanField(verbose_name='в продаже', default=False)
+    is_completed = models.BooleanField(verbose_name='построен', default=False)
+    offer = models.CharField(verbose_name="предложение", max_length=256, choices=OfferChoice.choices,
+                             blank=True, null=True)
+    key_words = models.CharField(verbose_name='Ключевые слова (SEO)', max_length=556, blank=True, null=True)
     title = models.CharField(verbose_name='название', max_length=256, unique=True)
     main_picture = models.ImageField(verbose_name='Главная фотография', upload_to='construction_images')
     street_address = models.CharField(verbose_name='адрес улицы', max_length=200)
@@ -73,8 +78,6 @@ class Construction(models.Model):
                                  on_delete=models.DO_NOTHING, blank=True, null=True)
     latitude = models.DecimalField(verbose_name='широта', max_digits=9, decimal_places=6, blank=True, null=True)
     longitude = models.DecimalField(verbose_name='долгота', max_digits=9, decimal_places=6, blank=True, null=True)
-    offer = models.CharField(verbose_name="предложение", max_length=256, choices=OfferChoice.choices,
-                             blank=True, null=True)
     cost_per_square_meter = models.DecimalField(verbose_name='Стоимость за 1 m2', max_digits=10, decimal_places=2)
     construction_state = models.CharField(verbose_name='готовность объекта', max_length=256,
                                           choices=ConstructionStateChoice.choices, default='10%', blank=True, null=True)
@@ -87,9 +90,6 @@ class Construction(models.Model):
     installment = models.CharField(verbose_name='в рассрочку', max_length=256, blank=True, null=True)
     description = models.TextField(verbose_name='описание объекта', blank=True, null=True)
     youtube_link = models.URLField(verbose_name='ссылка на видео', blank=True, null=True)
-    is_selling = models.BooleanField(verbose_name='в продаже', default=False)
-    is_completed = models.BooleanField(verbose_name='построен', default=False)
-    key_words = models.CharField(verbose_name='Ключевые слова', max_length=556, blank=True, null=True)
 
     def __str__(self):
         return f'{self.title}, {self.street_address}'
