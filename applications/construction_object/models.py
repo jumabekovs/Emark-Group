@@ -143,6 +143,7 @@ class Block(models.Model):
     block_name = models.CharField(verbose_name='Название', max_length=256)
     plan_model = models.FileField(verbose_name='План', blank=True, null=True)
     sides = models.CharField(verbose_name='Сторона', max_length=20, choices=SideChoices.choices, blank=True, null=True)
+    is_sold = models.BooleanField(verbose_name='Продан', default=False)
 
     class Meta:
         verbose_name = 'Блок'

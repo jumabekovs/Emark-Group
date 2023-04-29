@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Construction, Advantage, Flat, ConstructionImage, Feature, Infrastructure
+from .models import Construction, Advantage, Flat, ConstructionImage, Feature, Infrastructure, Block
 from ..news_blog.serializers import PostListSerializer
 
 
@@ -78,3 +78,14 @@ class FlatDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flat
         exclude = ('id',)
+
+
+class BlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Block
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['construction'] = str(instance.construction.title)
+        return representation

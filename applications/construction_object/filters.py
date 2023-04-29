@@ -18,6 +18,6 @@ class FlatFilter(filters.FilterSet):
 
     class Meta:
         model = Flat
-        fields = ('type', 'rooms', 'start_price', 'end_price', )
+        fields = ('type', 'rooms', 'start_price', 'end_price', 'block')
 
 

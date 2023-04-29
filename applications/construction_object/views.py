@@ -4,7 +4,7 @@ from rest_framework.pagination import PageNumberPagination
 
 from .models import Construction, Flat, Block
 from .serializers import ConstructionListSerializer, ConstructionDetailSerializer, \
-    FlatListSerializer, FlatDetailSerializer
+    FlatListSerializer, FlatDetailSerializer, BlockSerializer
 from .filters import ConstructionFilter, FlatFilter
 
 
@@ -43,3 +43,8 @@ class FlatListView(ListAPIView):
 class FlatDetailView(RetrieveAPIView):
     queryset = Flat.objects.all()
     serializer_class = FlatDetailSerializer
+
+
+class BlockView(ListAPIView):
+    queryset = Block.objects.all()
+    serializer_class = BlockSerializer

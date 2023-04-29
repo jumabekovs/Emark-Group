@@ -6,7 +6,7 @@ from django.urls import path, include
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
-from applications.construction_object.views import ConstructionListView, ConstructionDetailView
+from applications.construction_object.views import ConstructionListView, ConstructionDetailView, BlockView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -27,6 +27,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    path('blocks/', BlockView.as_view()),
     path('construction/list/', ConstructionListView.as_view()),
     path('construction/<int:pk>/', ConstructionDetailView.as_view()),
     path('construction/<int:pk>/', include('applications.construction_object.urls')),
