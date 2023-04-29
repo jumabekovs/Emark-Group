@@ -11,11 +11,11 @@ class JobCategoryChoices(models.TextChoices):
 
 class Member(models.Model):
     name = models.CharField(verbose_name='ФИО', max_length=256)
+    job_category = models.CharField(verbose_name='категория', choices=JobCategoryChoices.choices,
+                                     max_length=256, blank=True, null=True)
     position = models.CharField(verbose_name='должность', max_length=256, blank=True, null=True)
     title = models.TextField(verbose_name='заголовок')
     quote = models.TextField(verbose_name='цитата')
-    job_category = models.CharField(verbose_name='категория', choices=JobCategoryChoices.choices,
-                                     max_length=256, blank=True, null=True)
     bio = models.TextField(verbose_name='био', blank=True, null=True)
     photo = models.ImageField(verbose_name='фото', upload_to='team', blank=True, null=True)
 
