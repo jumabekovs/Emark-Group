@@ -7,6 +7,7 @@ class PostCategoryChoice(models.TextChoices):
     NEWS_COMPANY = ('Новости компании', _('Новости компании'))
     PRESS_CENTER = ('Пресс-центр', _('Пресс-центр'))
     CONSTRUCTION_PROGRESS = ('Ход строительства', _('Ход строительства'))
+    VACANCY = ('Вакансии',_('Вакансии'))
 
 
 class Post(models.Model):
