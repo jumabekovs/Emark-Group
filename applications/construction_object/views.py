@@ -2,7 +2,7 @@ from django_filters import rest_framework as filters
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
 
-from .models import Construction, Flat
+from .models import Construction, Flat, Block
 from .serializers import ConstructionListSerializer, ConstructionDetailSerializer, \
     FlatListSerializer, FlatDetailSerializer
 from .filters import ConstructionFilter, FlatFilter

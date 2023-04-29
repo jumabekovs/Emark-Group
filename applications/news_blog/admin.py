@@ -12,7 +12,7 @@ class PostImageAdmin(admin.TabularInline):
 
 
 class PostAdmin(SummernoteModelAdmin, TranslationAdmin):
-    summernote_fields = ('title', 'content', )
+    summernote_fields = ('content', )
     inlines = [PostImageAdmin]
 
 

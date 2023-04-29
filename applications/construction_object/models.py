@@ -2,6 +2,13 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+class SideChoices(models.TextChoices):
+    north = ('Север', _('Север'))
+    south = ('Юг', _('Юг'))
+    east = ('Восток', _('Восток'))
+    west = ('Запад', _('Запад'))
+
+
 class District(models.Model):
     title = models.CharField(verbose_name='название', max_length=256, unique=True)
 
@@ -130,6 +137,21 @@ class Feature(models.Model):
         verbose_name_plural = 'Особенности'
 
 
+class Block(models.Model):
+    construction = models.ForeignKey(Construction, on_delete=models.CASCADE, verbose_name='объект',
+                                     related_name='block_objects', blank=True, null=True)
+    block_name = models.CharField(verbose_name='Название', max_length=256)
+    plan_model = models.FileField(verbose_name='План', blank=True, null=True)
+    sides = models.CharField(verbose_name='Сторона', max_length=20, choices=SideChoices.choices, blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Блок'
+        verbose_name_plural = 'Блоки'
+
+    def __str__(self):
+        return f'{self.construction.title} - {self.block_name}'
+
+
 class RoomsCount(models.TextChoices):
     studio = ('Studio', 'Студия')
     one = ('1', _('1 комната'))
@@ -147,6 +169,8 @@ class FlatTypeChoice(models.TextChoices):
 class Flat(models.Model):
     construction = models.ForeignKey(Construction, on_delete=models.CASCADE, verbose_name='объект',
                                      related_name='layout', blank=True, null=True)
+    block = models.ForeignKey(Block, verbose_name='корпус', on_delete=models.CASCADE, related_name='block_flat',
+                              blank=True, null=True)
     type = models.CharField(verbose_name='тип помещения', max_length=256, choices=FlatTypeChoice.choices,
                             blank=True, null=True)
     layout_photo = models.ImageField(verbose_name='планировка ', upload_to='layouts', blank=True, null=True)
@@ -155,7 +179,7 @@ class Flat(models.Model):
                              blank=True, null=True)
     square_meters = models.PositiveIntegerField(verbose_name='площадь помещения', blank=True, null=True)
     floor = models.IntegerField(verbose_name='этаж', blank=True, null=True)
-    building = models.CharField(verbose_name='корпус', max_length=256, blank=True, null=True)
+
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='цена', blank=True, null=True)
     mortgage = models.CharField(verbose_name='в ипотеку', max_length=256, blank=True, null=True)
 
@@ -163,8 +187,8 @@ class Flat(models.Model):
         return f'{self.construction.title}-{self.type}-{self.square_meters}m2'
 
     class Meta:
-        verbose_name = 'Помещение'
-        verbose_name_plural = 'Помещения'
+        verbose_name = 'Планировка'
+        verbose_name_plural = 'Планировки'
 
 
 class Infrastructure(models.Model):
@@ -181,3 +205,7 @@ class Infrastructure(models.Model):
 
     def __str__(self):
         return f'{self.construction}'
+
+    class Meta:
+        verbose_name = 'Инфраструктура'
+        verbose_name_plural = 'Инфраструктуры'
