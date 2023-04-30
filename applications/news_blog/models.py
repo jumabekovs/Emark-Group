@@ -13,11 +13,11 @@ class PostCategoryChoice(models.TextChoices):
 class Post(models.Model):
     category = models.CharField(verbose_name='категория', max_length=20, choices=PostCategoryChoice.choices,
                                 blank=True, null=True)
+    construction = models.ForeignKey(Construction, on_delete=models.CASCADE, verbose_name='объект',
+                                     related_name='post_construction', null=True, blank=True)
     title = models.CharField(verbose_name='название', max_length=256, blank=True, null=True)
     content = models.TextField(verbose_name='контент', blank=True, null=True)
     image = models.ImageField(verbose_name='картинка поста', upload_to='post_images', blank=True, null=True)
-    construction = models.ForeignKey(Construction, on_delete=models.CASCADE, verbose_name='объект',
-                                     related_name='post_construction', null=True, blank=True)
     created_date = models.DateField(verbose_name='дата создания поста', auto_now_add=True)
 
     def __str__(self):
