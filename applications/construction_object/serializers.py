@@ -45,13 +45,13 @@ class ConstructionImageSerializer(serializers.ModelSerializer):
 class ConstructionListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Construction
-        fields = ('id', 'title', 'main_picture', 'offer', 'street_address', 'cost_per_square_meter', 'min_price')
+        fields = "__all__"
 
 
 class ConstructionDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Construction
-        exclude = ('id', 'offer', 'cost_per_square_meter')
+        fields = "__all__"
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
@@ -64,7 +64,7 @@ class ConstructionDetailSerializer(serializers.ModelSerializer):
         representation['district'] = str(instance.district.title)
         representation['construction_completion_year'] = str(instance.construction_completion_year.year)
         representation['posts'] = PostListSerializer(instance.post_construction.all(), many=True).data
-        representation['infrasrtucture'] = InfrastructureSerializer(instance.infrasrtucture_nearby.all(), many=True).data
+        representation['infrastructure'] = InfrastructureSerializer(instance.infrasrtucture_nearby.all(), many=True).data
         return representation
 
 
