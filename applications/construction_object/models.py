@@ -21,10 +21,9 @@ class District(models.Model):
 
 
 class OfferChoice(models.TextChoices):
-    start_sale = ('Старт продаж', _('Старт продаж'))
-    ten_percent = ('Скидки до 10%', _('Скидки до 10%'))
-    last_sale = ('Последнее предложение', _('Последнее предложение'))
-    sales_complete = ('Продажи завершины', _('Продажи завершины'))
+    new = ('Новый', _('Новый'))
+    on_process = ('в процессе', _('в процессе'))
+    end_process = ('в завершении', _('в завершении'))
 
 
 class ConstructionStateChoice(models.TextChoices):
@@ -63,9 +62,24 @@ class ConstructionTypeChoice(models.TextChoices):
     commercial = ('коммерческий', _('Коммерческий'))
 
 
+class SellingStatus(models.TextChoices):
+    selling = ('в продаже', _('в продаже'))
+    built = ('построено', _('построено'))
+
+
+class ClassObj(models.TextChoices):
+    economy = ('эконом', _('эконом'))
+    comfort = ('комфорт', _('комфорт'))
+    business = ('бизнес', _('бизнес'))
+    premium = ('премиум', _('премиум'))
+
+
 class Construction(models.Model):
     type = models.CharField(verbose_name='тип объекта', max_length=256, choices=ConstructionTypeChoice.choices,
                             blank=True, null=True)
+    class_obj = models.CharField(max_length=25, choices=ClassObj.choices, verbose_name='класс', blank=True, null=True)
+    selling_status = models.CharField(max_length=25, choices=SellingStatus.choices,
+                                      verbose_name='Статус', default='в продаже')
     is_selling = models.BooleanField(verbose_name='в продаже', default=False)
     is_completed = models.BooleanField(verbose_name='построен', default=False)
     offer = models.CharField(verbose_name="предложение", max_length=256, choices=OfferChoice.choices,
@@ -83,6 +97,7 @@ class Construction(models.Model):
                                           choices=ConstructionStateChoice.choices, default='10%', blank=True, null=True)
     construction_completion_quarter = models.CharField(verbose_name='квартал сдачи объекта', max_length=256,
                                           choices=Quarter.choices, default='1 квартал', blank=True, null=True)
+    construction_starting_year = models.DateField(verbose_name='год начала строительства', blank=True, null=True)
     construction_completion_year = models.ForeignKey(Year, verbose_name='год сдачи объекта',
                                                      related_name='construction_completion_year',
                                                      on_delete=models.DO_NOTHING, blank=True, null=True)

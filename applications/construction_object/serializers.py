@@ -42,12 +42,6 @@ class ConstructionImageSerializer(serializers.ModelSerializer):
         return representation
 
 
-class ConstructionListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Construction
-        fields = "__all__"
-
-
 class ConstructionDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Construction
@@ -66,6 +60,16 @@ class ConstructionDetailSerializer(serializers.ModelSerializer):
         representation['posts'] = PostListSerializer(instance.post_construction.all(), many=True).data
         representation['infrastructure'] = InfrastructureSerializer(instance.infrasrtucture_nearby.all(), many=True).data
         return representation
+
+
+class ConstructionListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Construction
+        fields = "__all__"
+
+    def get_count(self, obj):
+        return obj.filter(selling_status='')
+
 
 
 class FlatListSerializer(serializers.ModelSerializer):

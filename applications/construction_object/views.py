@@ -13,13 +13,17 @@ class ConstructionListView(ListAPIView):
     serializer_class = ConstructionListSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = ConstructionFilter
+    lookup_field = 'selling_status'
     pagination_class = PageNumberPagination
 
     def list(self, request, *args, **kwargs):
         response = super().list(request, *args, **kwargs)
-        response.data = {'status': 'success', 'data': response.data, 'completed_objects_count':
-            Construction.objects.filter(is_completed=True).count(),'selling_objects_count':
-            Construction.objects.filter(is_selling=True).count()}
+        response.data = {
+            'status': 'success',
+            'data': response.data,
+            'completed_objects_count': Construction.objects.filter(selling_status='в продаже').count(),
+            'selling_objects_count': Construction.objects.filter(selling_status='построено').count()
+        }
         return response
 
 
