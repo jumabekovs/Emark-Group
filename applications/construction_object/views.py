@@ -21,8 +21,8 @@ class ConstructionListView(ListAPIView):
         response.data = {
             'status': 'success',
             'data': response.data,
-            'completed_objects_count': Construction.objects.filter(selling_status='в продаже').count(),
-            'selling_objects_count': Construction.objects.filter(selling_status='построено').count()
+            'completed_objects_count': Construction.objects.filter(selling_status='built').count(),
+            'selling_objects_count': Construction.objects.filter(selling_status='selling').count()
         }
         return response
 

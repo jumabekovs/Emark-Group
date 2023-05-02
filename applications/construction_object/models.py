@@ -63,8 +63,8 @@ class ConstructionTypeChoice(models.TextChoices):
 
 
 class SellingStatus(models.TextChoices):
-    selling = ('в продаже', _('в продаже'))
-    built = ('построено', _('построено'))
+    selling = ('selling', _('в продаже'))
+    built = ('built', _('построено'))
 
 
 class ClassObj(models.TextChoices):
