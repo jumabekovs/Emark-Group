@@ -4,4 +4,4 @@ from .models import History
 
 @register(History)
 class HistoryTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title', 'description', )

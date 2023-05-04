@@ -11,7 +11,7 @@ class MileStoneAdmin(SummernoteModelAdminMixin, admin.TabularInline):
 
 
 class HistoryAdmin(SummernoteModelAdmin, TranslationAdmin):
-    summernote_fields = ('title', 'description')
+    summernote_fields = ('description', )
     inlines = [MileStoneAdmin]
 
 

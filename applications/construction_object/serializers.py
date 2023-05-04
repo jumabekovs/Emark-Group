@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Construction, Advantage, Flat, ConstructionImage, Feature, Infrastructure, Block
+from .models import Construction, Advantage, Flat, ConstructionImage, Feature, Infrastructure, Block, FlatImages
 from ..news_blog.serializers import PostListSerializer
 
 
@@ -71,17 +71,37 @@ class ConstructionListSerializer(serializers.ModelSerializer):
         return obj.filter(selling_status='')
 
 
-
 class FlatListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flat
         fields = '__all__'
 
 
+class FlatImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FlatImages
+        fields = ('image',)
+
+    def _get_image_url(self, obj):
+        if obj.image:
+            url = obj.image.url
+            requests = self.context.get("request")
+            if requests is not None:
+                url = requests.build_absolute_uri(url)
+        else:
+            url = ""
+        return url
+
+
 class FlatDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flat
-        exclude = ('id',)
+        fields = "__all__"
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['images'] = FlatImageSerializer(instance.flat_images.all(), many=True).data
+        return representation
 
 
 class BlockSerializer(serializers.ModelSerializer):

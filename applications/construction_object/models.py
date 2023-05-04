@@ -207,6 +207,15 @@ class Flat(models.Model):
         verbose_name_plural = 'Планировки'
 
 
+class FlatImages(models.Model):
+    flat = models.ForeignKey(Flat, on_delete=models.CASCADE, related_name='flat_images', blank=True, null=True)
+    image = models.ImageField(verbose_name='фото квартиры', blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Фото Объекта'
+        verbose_name_plural = 'Фото Объектов'
+
+
 class Infrastructure(models.Model):
     construction = models.ForeignKey(Construction, on_delete=models.CASCADE, verbose_name='объект',
                                      related_name='infrasrtucture_nearby', blank=True, null=True)
