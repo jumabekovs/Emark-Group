@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework.generics import ListAPIView
+from .models import History
+from .serializers import HistorySerializers
 
-# Create your views here.
+
+class HistoryListView(ListAPIView):
+    queryset = History.objects.all()
+    serializer_class = HistorySerializers

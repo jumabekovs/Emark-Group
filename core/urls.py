@@ -7,6 +7,7 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
 from applications.construction_object.views import ConstructionListView, ConstructionDetailView, BlockView
+from applications.history.views import HistoryListView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -31,6 +32,7 @@ urlpatterns += i18n_patterns(
     path('construction/list/', ConstructionListView.as_view()),
     path('construction/<int:pk>/', ConstructionDetailView.as_view()),
     path('construction/<int:pk>/', include('applications.construction_object.urls')),
+    path('history/', HistoryListView.as_view()),
     path('blog/', include('applications.news_blog.urls')),
     path('team/', include('applications.team_member.urls')),
     path('docs/', include('applications.document.urls')),
