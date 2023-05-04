@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'applications.team_member',
     'applications.configuration',
     'applications.document',
+    'applications.history',
 ]
 
 MIDDLEWARE = [
