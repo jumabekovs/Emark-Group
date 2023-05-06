@@ -80,8 +80,6 @@ class Construction(models.Model):
     class_obj = models.CharField(max_length=25, choices=ClassObj.choices, verbose_name='класс', blank=True, null=True)
     selling_status = models.CharField(max_length=25, choices=SellingStatus.choices,
                                       verbose_name='Статус', default='в продаже')
-    is_selling = models.BooleanField(verbose_name='в продаже', default=False)
-    is_completed = models.BooleanField(verbose_name='построен', default=False)
     offer = models.CharField(verbose_name="предложение", max_length=256, choices=OfferChoice.choices,
                              blank=True, null=True)
     key_words = models.CharField(verbose_name='Ключевые слова (SEO)', max_length=556, blank=True, null=True)
