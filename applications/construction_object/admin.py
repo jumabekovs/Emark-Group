@@ -3,10 +3,16 @@ from django.contrib.auth.models import Group, User
 from django_summernote.admin import SummernoteModelAdmin, SummernoteModelAdminMixin
 
 from .models import District, Construction, ConstructionImage, Advantage, Feature, Flat, FlatImages, Year, \
-    Infrastructure, Block
+    Infrastructure, Block, PriceList
 from django_summernote.utils import get_attachment_model
 
 from modeltranslation.admin import TranslationAdmin
+
+
+class PriceListAdmin(admin.TabularInline):
+    model = PriceList
+    max_num = 6
+    extra = 2
 
 
 class InfrastructureAdmin(admin.TabularInline):
@@ -34,7 +40,7 @@ class FeatureAdmin(SummernoteModelAdminMixin, admin.TabularInline):
 
 class ConstructionAdmin(SummernoteModelAdmin, TranslationAdmin):
     summernote_fields = 'description'
-    inlines = [ConstructionImageAdmin, FeatureAdmin, InfrastructureAdmin]
+    inlines = [PriceListAdmin, ConstructionImageAdmin, FeatureAdmin, InfrastructureAdmin]
     list_display = ['title', 'street_address', 'construction_completion_quarter']
     list_filter = ['district', 'cost_per_square_meter', 'offer']
 

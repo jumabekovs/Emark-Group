@@ -232,3 +232,18 @@ class Infrastructure(models.Model):
     class Meta:
         verbose_name = 'Инфраструктура'
         verbose_name_plural = 'Инфраструктуры'
+
+
+class PriceList(models.Model):
+    construction = models.ForeignKey(Construction, related_name='price_list',
+                                     on_delete=models.CASCADE, verbose_name='объект', blank=True, null=True)
+    price = models.DecimalField(verbose_name='цена', max_digits=10, decimal_places=2)
+    date = models.DateField(verbose_name='дата', blank=True, null=True)
+    is_active = models.BooleanField(verbose_name='актуальный', default=False)
+
+    def __str__(self):
+        return f'{self.construction} - {self.date} - {self.price}'
+
+    class Meta:
+        verbose_name = 'Прайс Лист'
+        verbose_name_plural = 'Прайс Лист'
