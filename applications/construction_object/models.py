@@ -21,7 +21,7 @@ class District(models.Model):
 
 
 class OfferChoice(models.TextChoices):
-    new = ('Новый', _('Новый'))
+    new = ('новый', _('новый'))
     on_process = ('в процессе', _('в процессе'))
     end_process = ('в завершении', _('в завершении'))
 
@@ -79,18 +79,18 @@ class Construction(models.Model):
                             blank=True, null=True)
     class_obj = models.CharField(max_length=25, choices=ClassObj.choices, verbose_name='класс', blank=True, null=True)
     selling_status = models.CharField(max_length=25, choices=SellingStatus.choices,
-                                      verbose_name='Статус', default='в продаже')
+                                      verbose_name='статус', default='в продаже')
     offer = models.CharField(verbose_name="предложение", max_length=256, choices=OfferChoice.choices,
                              blank=True, null=True)
-    key_words = models.CharField(verbose_name='Ключевые слова (SEO)', max_length=556, blank=True, null=True)
+    key_words = models.CharField(verbose_name='ключевые слова (SEO)', max_length=556, blank=True, null=True)
     title = models.CharField(verbose_name='название', max_length=256, unique=True)
-    main_picture = models.ImageField(verbose_name='Главная фотография', upload_to='construction_images')
+    main_picture = models.ImageField(verbose_name='главная фотография', upload_to='construction_images')
     street_address = models.CharField(verbose_name='адрес улицы', max_length=200)
     district = models.ForeignKey(District, verbose_name='район', related_name='construction_district',
                                  on_delete=models.DO_NOTHING, blank=True, null=True)
     latitude = models.DecimalField(verbose_name='широта', max_digits=9, decimal_places=6, blank=True, null=True)
     longitude = models.DecimalField(verbose_name='долгота', max_digits=9, decimal_places=6, blank=True, null=True)
-    cost_per_square_meter = models.DecimalField(verbose_name='Стоимость за 1 m2', max_digits=10, decimal_places=2)
+    cost_per_square_meter = models.DecimalField(verbose_name='стоимость за 1 m2', max_digits=10, decimal_places=2)
     construction_state = models.CharField(verbose_name='готовность объекта', max_length=256,
                                           choices=ConstructionStateChoice.choices, default='10%', blank=True, null=True)
     construction_completion_quarter = models.CharField(verbose_name='квартал сдачи объекта', max_length=256,
@@ -99,7 +99,7 @@ class Construction(models.Model):
     construction_completion_year = models.ForeignKey(Year, verbose_name='год сдачи объекта',
                                                      related_name='construction_completion_year',
                                                      on_delete=models.DO_NOTHING, blank=True, null=True)
-    min_price = models.PositiveIntegerField(verbose_name='Минимальная цена от', blank=True, null=True)
+    min_price = models.PositiveIntegerField(verbose_name='минимальная цена от', blank=True, null=True)
     installment = models.CharField(verbose_name='в рассрочку', max_length=256, blank=True, null=True)
     description = models.TextField(verbose_name='описание объекта', blank=True, null=True)
     youtube_link = models.URLField(verbose_name='ссылка на видео', blank=True, null=True)
@@ -114,7 +114,7 @@ class Construction(models.Model):
 
 class ConstructionImage(models.Model):
     construction = models.ForeignKey(Construction, on_delete=models.CASCADE, related_name='construction_image')
-    image = models.ImageField(verbose_name='Фотографии', upload_to='construction_images', blank=True, null=True)
+    image = models.ImageField(verbose_name='фотографии', upload_to='construction_images', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Фотография объекта'
@@ -122,7 +122,7 @@ class ConstructionImage(models.Model):
 
 
 class Advantage(models.Model):
-    construction = models.ManyToManyField(Construction, verbose_name='Объект',
+    construction = models.ManyToManyField(Construction, verbose_name='объект',
                                           related_name='advantage_of_construction')
     description = models.TextField(verbose_name='краткое описание', blank=True, null=True)
     logo = models.ImageField(verbose_name='лого', upload_to='advantage_logo', blank=True, null=True)
@@ -153,10 +153,10 @@ class Feature(models.Model):
 class Block(models.Model):
     construction = models.ForeignKey(Construction, on_delete=models.CASCADE, verbose_name='объект',
                                      related_name='block_objects', blank=True, null=True)
-    block_name = models.CharField(verbose_name='Название', max_length=256)
-    plan_model = models.FileField(verbose_name='План', blank=True, null=True)
-    sides = models.CharField(verbose_name='Сторона', max_length=20, choices=SideChoices.choices, blank=True, null=True)
-    is_sold = models.BooleanField(verbose_name='Продан', default=False)
+    block_name = models.CharField(verbose_name='название', max_length=256)
+    plan_model = models.FileField(verbose_name='план', blank=True, null=True)
+    sides = models.CharField(verbose_name='сторона', max_length=20, choices=SideChoices.choices, blank=True, null=True)
+    is_sold = models.BooleanField(verbose_name='продан', default=False)
 
     class Meta:
         verbose_name = 'Блок'
