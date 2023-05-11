@@ -84,6 +84,7 @@ class Construction(models.Model):
                              blank=True, null=True)
     key_words = models.CharField(verbose_name='ключевые слова (SEO)', max_length=556, blank=True, null=True)
     title = models.CharField(verbose_name='название', max_length=256, unique=True)
+    sub_title = models.CharField(verbose_name='название', max_length=256, blank=True, null=True)
     main_picture = models.ImageField(verbose_name='главная фотография', upload_to='construction_images')
     street_address = models.CharField(verbose_name='адрес улицы', max_length=200)
     district = models.ForeignKey(District, verbose_name='район', related_name='construction_district',
@@ -190,8 +191,9 @@ class Flat(models.Model):
     layout_photo = models.ImageField(verbose_name='планировка ', upload_to='layouts', blank=True, null=True)
     rooms = models.CharField(verbose_name='количество комнат', max_length=6, choices=RoomsCount.choices,
                              blank=True, null=True)
-    floor = models.IntegerField(verbose_name='этаж', blank=True, null=True)
-    square_meters = models.PositiveIntegerField(verbose_name='площадь помещения', blank=True, null=True)
+    floor = models.CharField(verbose_name='этаж', max_length=25, blank=True, null=True)
+    square_meters = models.DecimalField(verbose_name='площадь помещения', max_digits=4, decimal_places=2,
+                                        blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='цена', blank=True, null=True)
     mortgage = models.CharField(verbose_name='в ипотеку', max_length=256, blank=True, null=True)
 
