@@ -188,12 +188,10 @@ class Flat(models.Model):
     type = models.CharField(verbose_name='тип помещения', max_length=256, choices=FlatTypeChoice.choices,
                             blank=True, null=True)
     layout_photo = models.ImageField(verbose_name='планировка ', upload_to='layouts', blank=True, null=True)
-    design_photo = models.ImageField(verbose_name='3D модель', upload_to='layouts/', blank=True, null=True)
     rooms = models.CharField(verbose_name='количество комнат', max_length=6, choices=RoomsCount.choices,
                              blank=True, null=True)
-    square_meters = models.PositiveIntegerField(verbose_name='площадь помещения', blank=True, null=True)
     floor = models.IntegerField(verbose_name='этаж', blank=True, null=True)
-
+    square_meters = models.PositiveIntegerField(verbose_name='площадь помещения', blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='цена', blank=True, null=True)
     mortgage = models.CharField(verbose_name='в ипотеку', max_length=256, blank=True, null=True)
 
@@ -203,6 +201,26 @@ class Flat(models.Model):
     class Meta:
         verbose_name = 'Планировка'
         verbose_name_plural = 'Планировки'
+
+
+class Room(models.Model):
+    flat = models.ForeignKey(Flat, related_name='room', on_delete=models.CASCADE)
+    hall = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='холл', blank=True, null=True)
+    dining_room = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='гостинная', blank=True, null=True)
+    kitchen = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='кухня', blank=True, null=True)
+    balcony_1 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='балкон 1', blank=True, null=True)
+    balcony_2 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='балкон 2', blank=True, null=True)
+    balcony_3 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='балкон 3', blank=True, null=True)
+    bath = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='ванная', blank=True, null=True)
+    wc_1 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='санузел 1', blank=True, null=True)
+    wc_2 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='санузел 1', blank=True, null=True)
+    bed_room_1 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='спальня 1', blank=True, null=True)
+    bed_room_2 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='спальня 2', blank=True, null=True)
+    bed_room_3 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='спальня 3', blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'комната'
+        verbose_name_plural = 'комнаты'
 
 
 class FlatImages(models.Model):

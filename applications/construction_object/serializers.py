@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Construction, Advantage, Flat, ConstructionImage, Feature, Infrastructure, Block, FlatImages, \
-    PriceList
+    PriceList, Room
 from ..news_blog.serializers import PostListSerializer
 
 
@@ -101,6 +101,12 @@ class FlatImageSerializer(serializers.ModelSerializer):
         return url
 
 
+class RoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Room
+        exclude = ("id", "flat")
+
+
 class FlatDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flat
@@ -108,6 +114,7 @@ class FlatDetailSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
+        representation['rooms'] = RoomSerializer(instance.room.all(), many=True).data
         representation['images'] = FlatImageSerializer(instance.flat_images.all(), many=True).data
         return representation
 
