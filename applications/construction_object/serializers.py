@@ -79,10 +79,27 @@ class ConstructionListSerializer(serializers.ModelSerializer):
         return obj.filter(selling_status='')
 
 
+class BlockSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Block
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['construction'] = str(instance.construction.title)
+        return representation
+
+
 class FlatListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flat
         fields = '__all__'
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['block'] = str(instance.block)
+        representation['block_image'] = str(instance.layout_photo)
+        return representation
 
 
 class FlatImageSerializer(serializers.ModelSerializer):
@@ -116,15 +133,8 @@ class FlatDetailSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation['rooms'] = RoomSerializer(instance.room.all(), many=True).data
         representation['images'] = FlatImageSerializer(instance.flat_images.all(), many=True).data
+        representation['block'] = str(instance.block)
+        representation['block_image'] = "https://res.cloudinary.com/dmefttnfm/image/upload/v1/"+\
+                                        str(instance.layout_photo)
         return representation
 
-
-class BlockSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Block
-        fields = '__all__'
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['construction'] = str(instance.construction.title)
-        return representation
