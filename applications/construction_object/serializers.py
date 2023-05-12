@@ -99,6 +99,7 @@ class FlatListSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation['block'] = str(instance.block)
         representation['block_image'] = str(instance.layout_photo)
+        representation['side'] = str(instance.block.sides)
         return representation
 
 
