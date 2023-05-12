@@ -134,6 +134,7 @@ class FlatDetailSerializer(serializers.ModelSerializer):
         representation['rooms'] = RoomSerializer(instance.room.all(), many=True).data
         representation['images'] = FlatImageSerializer(instance.flat_images.all(), many=True).data
         representation['block'] = str(instance.block)
+        representation['side'] = str(instance.block.sides)
         representation['block_image'] = "https://res.cloudinary.com/dmefttnfm/image/upload/v1/"+\
                                         str(instance.layout_photo)
         return representation
