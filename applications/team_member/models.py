@@ -7,6 +7,7 @@ class JobCategoryChoices(models.TextChoices):
     ceo = ('правление', _('правление'))
     management = ('менеджмент', _('менеджмент'))
     investors = ('инвесторы', _('инвесторы'))
+    partners = ('партнеры', _('партнеры'))
 
 
 class Member(models.Model):
@@ -25,3 +26,19 @@ class Member(models.Model):
     class Meta:
         verbose_name = 'Сотрудник'
         verbose_name_plural = 'Сотрудники'
+
+
+class Partner(models.Model):
+    name = models.CharField(verbose_name='ФИО', max_length=256)
+    company = models.CharField(verbose_name='компания', max_length=256, blank=True, null=True)
+    title = models.TextField(verbose_name='описание')
+    quote = models.TextField(verbose_name='цитата')
+    bio = models.TextField(verbose_name='био', blank=True, null=True)
+    photo = models.ImageField(verbose_name='фото', upload_to='team', blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.name}-{self.company}'
+
+    class Meta:
+        verbose_name = 'Партнер'
+        verbose_name_plural = 'Партнеры'

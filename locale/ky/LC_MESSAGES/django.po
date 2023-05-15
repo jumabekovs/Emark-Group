@@ -106,6 +106,16 @@ msgstr "башкаруучу орган"
 msgid "менеджмент"
 msgstr "менеджмент"
 
+#: applications/team_member/models.py:9
+msgid "инвесторы"
+msgstr "инвесторлор"
+
+#: applications/team_member/models.py:10
+msgid "партнеры"
+msgstr "партнерлор"
+
+
+
 #: core/settings.py:138
 msgid "Russia"
 msgstr "Орусча"

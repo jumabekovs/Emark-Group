@@ -8,6 +8,7 @@ from drf_yasg.views import get_schema_view
 
 from applications.construction_object.views import ConstructionListView, ConstructionDetailView, BlockView
 from applications.history.views import HistoryListView
+from applications.team_member.views import PartnerView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -37,10 +38,11 @@ urlpatterns += i18n_patterns(
     path('team/', include('applications.team_member.urls')),
     path('docs/', include('applications.document.urls')),
     path('conf/', include('applications.configuration.urls')),
+    path('partners/', PartnerView.as_view())
 )
 
 admin.site.site_header = 'Emark Group'
-admin.site.index_title = 'Administration'
+admin.site.index_title = 'Администрация'
 admin.site.site_title = 'Emark Group'
 
 if settings.DEBUG:
