@@ -5,9 +5,10 @@ from django.utils.translation import gettext_lazy as _
 
 class PostCategoryChoice(models.TextChoices):
     NEWS_COMPANY = ('Новости компании', _('Новости компании'))
-    PRESS_CENTER = ('Пресс-центр', _('Пресс-центр'))
+    PARTNERS = ('Партнерам', _('Партнерам'))
     CONSTRUCTION_PROGRESS = ('Ход строительства', _('Ход строительства'))
     VACANCY = ('Вакансии',_('Вакансии'))
+    INVESTORS = ('Инвесторам', _('Инвесторам'))
 
 
 class Post(models.Model):

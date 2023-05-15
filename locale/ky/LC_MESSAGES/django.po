@@ -83,8 +83,8 @@ msgid "Новости компании"
 msgstr "Компаниянын жаңылыктары"
 
 #: applications/news_blog/models.py:8
-msgid "Пресс-центр"
-msgstr "Басма сөз"
+msgid "Партнерам"
+msgstr "Партнерлорго"
 
 #: applications/news_blog/models.py:9
 msgid "Ход строительства"
@@ -93,6 +93,10 @@ msgstr "Курулуштун журушу"
 #: applications/news_blog/models.py:10
 msgid "Вакансии"
 msgstr "Вакансиялар"
+
+#: applications/news_blog/models.py:10
+msgid "Инвесторам"
+msgstr "Инвесторлорго"
 
 #: applications/team_member/models.py:6
 msgid "совет директоров"
