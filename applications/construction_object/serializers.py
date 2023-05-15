@@ -136,7 +136,7 @@ class FlatDetailSerializer(serializers.ModelSerializer):
         representation['images'] = FlatImageSerializer(instance.flat_images.all(), many=True).data
         representation['block'] = str(instance.block)
         representation['side'] = str(instance.block.sides)
-        representation['block_image'] = "https://res.cloudinary.com/dmefttnfm/image/upload/v1/"+\
-                                        str(instance.layout_photo)
+        representation['block_image'] = str(instance.block.plan_model)
+        representation['block'] = BlockSerializer(instance.block).data
         return representation
 

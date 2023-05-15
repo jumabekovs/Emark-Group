@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 class JobCategoryChoices(models.TextChoices):
     board_of_directors = ('совет директоров', _('совет директоров'))
-    ceo = ('генеральный директор', _('генеральный директор'))
+    ceo = ('правление', _('правление'))
     management = ('менеджмент', _('менеджмент'))
     investors = ('инвесторы', _('инвесторы'))
 

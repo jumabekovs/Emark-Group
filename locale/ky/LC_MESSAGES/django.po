@@ -99,8 +99,8 @@ msgid "совет директоров"
 msgstr "башкаруучулар кенеши"
 
 #: applications/team_member/models.py:7
-msgid "генеральный директор"
-msgstr "башкы директор"
+msgid "правление"
+msgstr "башкаруучу орган"
 
 #: applications/team_member/models.py:8
 msgid "менеджмент"
