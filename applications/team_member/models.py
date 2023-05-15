@@ -30,9 +30,9 @@ class Member(models.Model):
 
 class Partner(models.Model):
     name = models.CharField(verbose_name='ФИО', max_length=256)
-    company = models.CharField(verbose_name='компания', max_length=256, blank=True, null=True)
-    title = models.TextField(verbose_name='описание')
-    quote = models.TextField(verbose_name='цитата')
+    company = models.CharField(verbose_name='компания', max_length=256)
+    title = models.TextField(verbose_name='описание', blank=True, null=True)
+    quote = models.TextField(verbose_name='цитата',  blank=True, null=True)
     bio = models.TextField(verbose_name='био', blank=True, null=True)
     photo = models.ImageField(verbose_name='фото', upload_to='team', blank=True, null=True)
 
