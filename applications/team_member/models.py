@@ -29,7 +29,6 @@ class Member(models.Model):
 
 
 class Partner(models.Model):
-    name = models.CharField(verbose_name='ФИО', max_length=256)
     company = models.CharField(verbose_name='компания', max_length=256)
     title = models.TextField(verbose_name='описание', blank=True, null=True)
     quote = models.TextField(verbose_name='цитата',  blank=True, null=True)
@@ -37,7 +36,7 @@ class Partner(models.Model):
     photo = models.ImageField(verbose_name='фото', upload_to='team', blank=True, null=True)
 
     def __str__(self):
-        return f'{self.name}-{self.company}'
+        return f'{self.company}-{self.title}'
 
     class Meta:
         verbose_name = 'Партнер'

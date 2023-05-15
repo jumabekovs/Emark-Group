@@ -11,7 +11,7 @@ class MemberAdmin(SummernoteModelAdmin, TranslationAdmin):
 
 
 class PartnerAdmin(TranslationAdmin):
-    list_display = ('name', 'company')
+    list_display = ('company', 'title')
 
 
 admin.site.register(Member, MemberAdmin)
