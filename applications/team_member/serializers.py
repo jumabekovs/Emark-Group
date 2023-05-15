@@ -16,5 +16,6 @@ class MemberDetailSerializer(serializers.ModelSerializer):
 
 class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Member
-        fields = '__all__'
+        model = Partner
+        fields = "__all__"
+        

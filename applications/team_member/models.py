@@ -17,7 +17,7 @@ class Member(models.Model):
     position = models.CharField(verbose_name='должность', max_length=256, blank=True, null=True)
     title = models.TextField(verbose_name='заголовок')
     quote = models.TextField(verbose_name='цитата')
-    bio = models.TextField(verbose_name='био', blank=True, null=True)
+    bio = models.TextField(verbose_name='биография', blank=True, null=True)
     photo = models.ImageField(verbose_name='фото', upload_to='team', blank=True, null=True)
 
     def __str__(self):
