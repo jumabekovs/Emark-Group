@@ -118,8 +118,8 @@ class ConstructionImage(models.Model):
     image = models.ImageField(verbose_name='фотографии', upload_to='construction_images', blank=True, null=True)
 
     class Meta:
-        verbose_name = 'Фотография объекта'
-        verbose_name_plural = 'Фотографии объекта'
+        verbose_name = 'Фотография для карусели'
+        verbose_name_plural = 'Фотографии для карусели'
 
 
 class Advantage(models.Model):
@@ -257,7 +257,7 @@ class Infrastructure(models.Model):
 class PriceList(models.Model):
     construction = models.ForeignKey(Construction, related_name='price_list',
                                      on_delete=models.CASCADE, verbose_name='объект', blank=True, null=True)
-    price = models.DecimalField(verbose_name='цена', max_digits=10, decimal_places=2)
+    price = models.DecimalField(verbose_name='цена в долларах $', max_digits=10, decimal_places=2)
     date = models.DateField(verbose_name='дата', blank=True, null=True)
     is_active = models.BooleanField(verbose_name='актуальный', default=False)
 

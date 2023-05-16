@@ -18,4 +18,3 @@ class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Partner
         fields = "__all__"
-        
