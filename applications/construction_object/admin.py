@@ -38,7 +38,7 @@ class FeatureSummernoteAdmin(SummernoteModelAdmin, TranslationAdmin):
 class FeatureAdmin(SummernoteModelAdminMixin, admin.TabularInline):
     model = Feature
     max_num = 4
-    extra = 1
+    extra = 3
     summernote_fields = ('description_ky', 'description_ru')
     exclude = ('title', 'description')
 
