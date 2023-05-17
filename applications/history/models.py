@@ -13,12 +13,3 @@ class History(models.Model):
     class Meta:
         verbose_name = 'История'
         verbose_name_plural = 'Истории'
-
-
-class MileStone(models.Model):
-    year = models.ForeignKey(History, related_name='year_milestone', on_delete=models.CASCADE)
-    achievements = models.CharField(verbose_name='достижения', max_length=556)
-
-    class Meta:
-        verbose_name = 'Этап'
-        verbose_name_plural = 'Этапы'

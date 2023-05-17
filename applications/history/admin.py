@@ -1,17 +1,5 @@
 from django.contrib import admin
-from django_summernote.admin import SummernoteModelAdminMixin, SummernoteModelAdmin
-from modeltranslation.admin import TranslationAdmin
-from .models import History, MileStone
+from .models import History
 
 
-class MileStoneAdmin(SummernoteModelAdminMixin, admin.TabularInline):
-    model = MileStone
-    max_num = 5
-    extra = 1
-
-
-class HistoryAdmin(TranslationAdmin):
-    inlines = [MileStoneAdmin]
-
-
-admin.site.register(History, HistoryAdmin)
+admin.site.register(History)
