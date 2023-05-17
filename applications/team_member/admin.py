@@ -15,4 +15,4 @@ class PartnerAdmin(TranslationAdmin):
 
 
 admin.site.register(Member, MemberAdmin)
-admin.site.register(Partner)
+admin.site.register(Partner, PartnerAdmin)

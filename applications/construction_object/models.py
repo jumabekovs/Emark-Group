@@ -84,7 +84,7 @@ class Construction(models.Model):
                              blank=True, null=True)
     key_words = models.CharField(verbose_name='ключевые слова (SEO)', max_length=556, blank=True, null=True)
     title = models.CharField(verbose_name='название', max_length=256, unique=True)
-    sub_title = models.CharField(verbose_name='название', max_length=256, blank=True, null=True)
+    sub_title = models.CharField(verbose_name='описание', max_length=256, blank=True, null=True)
     main_picture = models.ImageField(verbose_name='главная фотография', upload_to='construction_images')
     street_address = models.CharField(verbose_name='адрес улицы', max_length=200)
     district = models.ForeignKey(District, verbose_name='район', related_name='construction_district',
@@ -156,7 +156,6 @@ class Block(models.Model):
                                      related_name='block_objects', blank=True, null=True)
     block_name = models.CharField(verbose_name='название', max_length=256)
     plan_model = models.FileField(verbose_name='план', blank=True, null=True)
-    sides = models.CharField(verbose_name='сторона', max_length=20, choices=SideChoices.choices, blank=True, null=True)
     is_sold = models.BooleanField(verbose_name='продан', default=False)
 
     class Meta:
@@ -221,13 +220,13 @@ class Room(models.Model):
     bed_room_3 = models.DecimalField(max_digits=4, decimal_places=2, verbose_name='спальня 3', blank=True, null=True)
 
     class Meta:
-        verbose_name = 'комната'
-        verbose_name_plural = 'комнаты'
+        verbose_name = 'квадратура'
+        verbose_name_plural = 'квадратура'
 
 
 class FlatImages(models.Model):
     flat = models.ForeignKey(Flat, on_delete=models.CASCADE, related_name='flat_images', blank=True, null=True)
-    image = models.ImageField(verbose_name='фото квартиры', blank=True, null=True)
+    image = models.ImageField(verbose_name='фото планировок', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Фото Объекта'

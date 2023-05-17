@@ -8,6 +8,7 @@ class DocumentListView(ListAPIView):
     serializer_class = DocumentSerializer
 
 
+
 class DocumentDetailView(RetrieveAPIView):
     queryset = Document.objects.all()
     serializer_class = DocumentSerializer
