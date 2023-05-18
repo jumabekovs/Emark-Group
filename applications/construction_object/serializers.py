@@ -99,7 +99,6 @@ class FlatListSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation['block'] = str(instance.block)
         representation['block_image'] = str(instance.layout_photo)
-        representation['side'] = str(instance.block.sides)
         return representation
 
 
@@ -135,7 +134,6 @@ class FlatDetailSerializer(serializers.ModelSerializer):
         representation['rooms'] = RoomSerializer(instance.room.all(), many=True).data
         representation['images'] = FlatImageSerializer(instance.flat_images.all(), many=True).data
         representation['block'] = str(instance.block)
-        representation['side'] = str(instance.block.sides)
         representation['block_image'] = str(instance.block.plan_model)
         representation['block'] = BlockSerializer(instance.block).data
         return representation
