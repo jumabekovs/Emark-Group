@@ -138,3 +138,4 @@ class FlatDetailSerializer(serializers.ModelSerializer):
         representation['block'] = BlockSerializer(instance.block).data
         return representation
 
+# remove sides from block
