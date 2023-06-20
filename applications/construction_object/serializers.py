@@ -1,7 +1,13 @@
 from rest_framework import serializers
 from .models import Construction, Advantage, Flat, ConstructionImage, Feature, Infrastructure, Block, FlatImages, \
-    PriceList, Room
+    PriceList, Room, Year
 from ..news_blog.serializers import PostListSerializer
+
+
+class YearSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Year
+        exclude = ('id', )
 
 
 class InfrastructureSerializer(serializers.ModelSerializer):
@@ -63,7 +69,7 @@ class ConstructionDetailSerializer(serializers.ModelSerializer):
         representation['flats'] = FlatListSerializer(instance.layout.all(), many=True).data
         representation['features'] = FeaturesSerializer(instance.features.all(), many=True).data
         representation['district'] = str(instance.district.title)
-        representation['construction_completion_year'] = str(instance.construction_completion_year.year)
+        representation['construction_completion_year'] = YearSerializer(instance.construction_completion_year).data["year"]
         representation['posts'] = PostListSerializer(instance.post_construction.all(), many=True).data
         representation['infrastructure'] = InfrastructureSerializer(instance.infrasrtucture_nearby.all(), many=True).data
         representation['price_list'] = PriceListSerializer(instance.price_list.all(), many=True).data
